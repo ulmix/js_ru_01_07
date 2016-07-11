@@ -1,18 +1,26 @@
-import React  from 'react'
+import React, { Component }  from 'react'
 import Article from './Article'
+import toggleSingle from './decorators/toggleSingle'
 
-function ArticleList(props) {
-    const { articles } = props
+class ArticleList extends Component {
+    render() {
+        const { articles, openedId, toggle } = this.props
 
-    const listItems = articles.map((el, index) => <li key = {el.id}><Article article = {el} isLast = {index == articles.length-1} /></li>)
-    return (
-        <div>
-            <h1>Article list</h1>
-            <ul>
-                {listItems}
-            </ul>
-        </div>
-    )
+        const listItems = articles.map((el, index) => <li key = {el.id}>
+            <Article article = {el}
+                isOpen = {el.id == openedId}
+                toggle = {toggle(el.id)}
+                isLast = {index == articles.length-1} />
+        </li>)
+        return (
+            <div>
+                <h1>Article list</h1>
+                <ul>
+                    {listItems}
+                </ul>
+            </div>
+        )
+    }
 }
 
-export default ArticleList
+export default toggleSingle(ArticleList)
