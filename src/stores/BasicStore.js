@@ -9,7 +9,7 @@ class BasicStore extends EventEmitter {
 	}
 
 	_registerActionSubscription(callback) {
-		AppDispatcher.register(callback);
+		this.dispatchToken = AppDispatcher.register(callback);
 	}
 
 	getAll() {
