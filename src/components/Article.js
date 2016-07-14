@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import CommentList from './CommentList'
+import { deleteArticle } from '../AC/articles'
 
 class Article extends Component {
     static propTypes = {
@@ -35,7 +36,7 @@ class Article extends Component {
 
     handleDelete = (ev) => {
         ev.preventDefault();
-        console.log('trying to delete Article', this.props.article.id);
+        deleteArticle(this.props.article.id);
     }
 }
 

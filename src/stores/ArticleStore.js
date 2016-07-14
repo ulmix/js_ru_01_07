@@ -1,9 +1,22 @@
 import { EventEmitter } from 'events';
+import AppDispatcher from '../dispatcher';
 
 class ArticleStore extends EventEmitter {
 	constructor (initialState = []) {
+		super()
 		this._items = {}
 		initialState.forEach(this._add)
+
+		AppDispatcher.register((action) => {
+			const { type, payload } = action
+
+			switch (type) {
+				case 'DELETE_ARTICLE':
+					this._delete(payload.id)
+					this.emitChange()
+				break
+			}
+		})
 	}
 
 	getAll() {

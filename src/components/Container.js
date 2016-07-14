@@ -20,7 +20,7 @@ class Container extends Component {
 
     componentWillUnmount() {
         articleStore.removeChangeListener(this.handleChange);  
-    },
+    }
 
     handleChange = () => {
         this.setState({
