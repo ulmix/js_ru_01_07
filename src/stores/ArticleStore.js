@@ -1,5 +1,6 @@
 import { EventEmitter } from 'events';
 import AppDispatcher from '../dispatcher';
+import { DELETE_ARTICLE } from '../constants'
 
 class ArticleStore extends EventEmitter {
 	constructor (initialState = []) {
@@ -11,7 +12,7 @@ class ArticleStore extends EventEmitter {
 			const { type, payload } = action
 
 			switch (type) {
-				case 'DELETE_ARTICLE':
+				case DELETE_ARTICLE:
 					this._delete(payload.id)
 					this.emitChange()
 				break
