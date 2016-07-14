@@ -1,6 +1,6 @@
 import React, { Component }  from 'react'
 import Article from './Article'
-import toggleSingle from './decorators/toggleSingle'
+import toggleSingle from '../decorators/toggleSingle'
 
 class ArticleList extends Component {
     render() {
